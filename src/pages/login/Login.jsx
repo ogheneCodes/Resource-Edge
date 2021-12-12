@@ -14,7 +14,7 @@ const Login = () => {
 
   const netWorkLatency = 1000;
 
-  // User store: Could add more users
+  // User store: Could add more users if you wish to
   const userStore = [
     { id: 1, username: "ebobomaxwwell25@gmail.com", password: "password" },
     { id: 2, username: "test@gmail.com", password: "password" },
