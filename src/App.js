@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation } from "react-router-dom";
+import AppHeader from "./components/app-header/AppHeader";
+import Landing from "./pages/Landing/Landing";
+import AppFooter from "./components/app-footer/AppFooter";
+import Login from "./pages/login/Login";
+import DashHeader from "./components/dash-header/DashHeader";
+import DashBoard from "./pages/dashboard/Dashboard";
+import "./App.css";
 
 function App() {
+  const location = useLocation();
+  console.log(location);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {location.pathname !== "/login" && location.pathname !== "/dashboard" && (
+        <AppHeader />
+      )}
+      {location.pathname === "/dashboard" && <DashHeader />}
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+      </Routes>
+      {location.pathname !== "/login" && location.pathname !== "/dashboard" && (
+        <AppFooter />
+      )}
     </div>
   );
 }
